@@ -1,0 +1,34 @@
+html,body {
+  height: 100%;
+  margin: 0;
+}
+
+#wrapper {
+    min-height: 100%;
+}
+
+#title{
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.img-circle {
+    border-radius: 100%;
+}
+
+thick{
+  font-weight: 500;
+}
+
+thin{
+  font-weight: 100;
+}
+
+med{
+  font-weight: 400;
+}
+
+italic{
+  font-style: italic;
+}
