@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feeder</title>
+    <!--Import Google Icon Font-->
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBd95XixSfEUWxg5y6lYI2hNWM9JIeChBc",
+            authDomain: "manthan-78033.firebaseapp.com",
+            databaseURL: "https://manthan-78033.firebaseio.com",
+            projectId: "manthan-78033",
+            storageBucket: "manthan-78033.appspot.com",
+            messagingSenderId: "828753765429"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+<body class="container" >
+<!--Feeder Title-->
+<div class="row">
+    <h3 class="center-align">Feeder</h3>
+</div>
+<!-- firebase auth is necessary in order to write to its database thus following user/pass fields-->
+<div class="row " id="fbAuth">
+    <form class="col s12">
+        <div class="row  col s5">
+            <div class="input-field">
+                <input id="username" type="text" class="validate">
+                <label for="username">Username</label>
+            </div>
+        </div>
+        <div class="row col s5">
+            <div class="input-field">
+                <input id="password" type="password" class="validate">
+                <label for="password">Password</label>
+            </div>
+        </div>
+        <div class="row col s2">
+            <a class="waves-effect waves-light btn-large blue white-text" onclick="signIn()">Sign In</a>
+        </div>
+    </form>
+</div>
+<!-- Feeder form to add articles to the database-->
+<div class="row" id="form" style="display: none;">
+    <form class="col s12" id="feed">
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="author" type="text" class="validate">
+                <label for="author">Author</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="class" type="text" class="validate">
+                <label for="class">Class</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s8">
+                <input id="email" type="email" class="validate">
+                <label for="email">Email</label>
+            </div>
+            <div class="input-field col s4">
+                <input id="index" type="number" class="validate">
+                <label for="index">Index</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="title" type="text" class="validate">
+                <label for="title">Title</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="sub_title" type="text" class="validate">
+                <label for="sub_title">Sub-Title</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="content" class="materialize-textarea"></textarea>
+                <label for="content">Content</label>
+            </div>
+        </div>
+        <div class="row">
+            <a class="btn deep-purple waves-effect waves-light" onclick="submit()">Submit</a>
+            <a class="btn red waves-effect waves-light" onclick="logOut()">Sign Out</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
