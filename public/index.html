@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- Firebase Import!-->
+      <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+      <script>
+          // Initialize Firebase
+          var config = {
+              apiKey: "AIzaSyBd95XixSfEUWxg5y6lYI2hNWM9JIeChBc",
+              authDomain: "manthan-78033.firebaseapp.com",
+              databaseURL: "https://manthan-78033.firebaseio.com",
+              projectId: "manthan-78033",
+              storageBucket: "manthan-78033.appspot.com",
+              messagingSenderId: "828753765429"
+          };
+          firebase.initializeApp(config);
+      </script>
+      <script type="text/javascript" src="js/index.js"></script>
+      <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+     <link type="text/css" rel="stylesheet" href="css/main.css">
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body onload="updateView()" bgcolor="#FAFAFA">
+    <header>
+        <div class="navWrapper">
+          <nav class="white z-depth-1" id="navbar">
+            <div class="nav-wrapper">
+                <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons black-text"> menu</i></a>
+                <a href="#" class="hide-on-small-and-down brand-logo grey-text text-darken-3" style="padding-left: 12px;">
+                  <img src="img/logo.png" style="height: 48px"/>
+                </a>
+                <!--Nav bar buttons -->
+              <ul class="right">
+                  <li><a href="#" class="btn-floating waves-effect blue"><i class="material-icons amber-text text-lighten-2">favorite</i></a></li>
+                  <li><a href="#" class="btn-floating waves-effect waves-light deep-purple"><i class="material-icons teal-text text-accent-3">bookmark</i></a></li>
+                  <li><a href="#" class="btn-floating waves-effect yellow"><i class="material-icons grey-text text-darken-4">share</i></a></li>
+                  <li></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <!--Side nav HTML code is below-->
+        <ul id="slide-out" class="side-nav">
+            <li class="bold"><a href="#!" class="waves-effect waves-teal"><i class="material-icons teal-text text-accent-3">bookmark</i>Bookmarks</a></li>
+            <li class="bold"><a href="#!" class="waves-effect waves-teal"><i class="material-icons amber-text text-lighten-1">favorite</i> Liked Articles</a></li>
+        </ul>
+
+    </header>
+    <main>
+      <div  class="container" id="article" style="padding-top: 84px;">
+        <div class="row">
+            <!-- following div creates pagination with two arrow. This is hidden on small screens -->
+          <div class="col s0 m1 l2">
+
+          </div>
+            <!-- Start of the Main body of article. -->
+          <div class="col s12 m10 l8" >
+              <!-- user information -->
+            <div class="row">
+                <div class="col s1.5">
+                    <img class="img-circle" src="img/sky.jpeg"/>
+                </div>
+                <div class="col s4">
+                    <span id="author"><b>Loading ...</b></span><br>
+                    <span id="class" class="grey-text text-darken-1" style="font-weight:400;">Loading ...</span><br>
+                    <span id="email" class="grey-text text-darken-1" style="">Loading ...</span>
+                </div>
+            </div>
+              <!-- Image related to the article goes here-->
+              <div id="image">
+                  <img id="articleImage" src="img/sky.jpeg"  class="z-depth-4" style="max-height: 256px;width: 100% !important;overflow: hidden;border-radius: 18px;"/>
+              </div>
+              <!-- Article starts here -->
+            <div id="Heading">
+              <h3 id="title" style="font-weight:500;z-index:100000">Loading ...</h3>
+              <h5 id="subtitle" style="font-weight:300;" class="grey-text text-darken-1">Loading ...</h5>
+            </div>
+            <p id="content" class="flow-text" style="white-space: pre-line;">
+              Loading ...
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+    <footer class="page-footer transparent" id="footer" style="padding: 8px !important;">
+        <a class="btn-floating btn-large waves-effect waves-light black" onclick="prev()"><i style="font-size: 48px" class="material-icons white-text" >chevron_left</i> </a>
+        <a class="btn-floating btn-large waves-effect waves-light black" onclick="next()"><i style="font-size: 48px" class="material-icons white-text" >chevron_right</i> </a>
+    </footer>
+    <script type="text/javascript">
+        let opened = false;
+        // Pushpin to fix navbar
+        $('#navbar').pushpin({
+            top: $('#navbar').offset().top
+        });
+        //for sidenav
+        $('.button-collapse').sideNav({
+                menuWidth: 300, // Default is 240
+                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+        );
+        $(document).ready(function(){
+
+        });
+        
+        function change() {
+            console.log('boo');
+            $('.button-collapse').sideNav('show');
+        }
+    </script>
+
+  </body>
+</html>
+
+<!-- TODO: Sticky navbar -->
