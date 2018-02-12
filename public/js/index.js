@@ -1,46 +1,62 @@
 let dbref = firebase.database().ref().child('articles');
 let counter = 11;
-let snap;
-
-
-function helloWorld(){
-  console.log("Hello World");
-}
+let lastPage = 13;
+let frontPage = 11;
+let likes = [];
 
 function updateView(){
-    let author = document.getElementById("author");
-    let standard = document.getElementById("class");
-    let email = document.getElementById("email");
-    let title = document.getElementById("title");
-    let subtitle = document.getElementById("subtitle");
-    let content = document.getElementById("content");
-
+    checkLiked();
+    animate_like();
     dbref.orderByChild("index").equalTo(counter).once('value').then(function (dataSnapshot){
-        console.log(dataSnapshot);
         if(dataSnapshot == null){
+            console.log(dataSnapshot);
             return true;
         }
         dataSnapshot.forEach(function (snapshot) {
-            author.innerText = snapshot.val().author;
-            standard.innerText = snapshot.val().class;
-            email.innerText = snapshot.val().email;
-            title.innerText = snapshot.val().title;
-            subtitle.innerText = snapshot.val().subtitle;
-            content.innerText = snapshot.val().content;
+            $("#author").text(snapshot.val().author);
+            $("#class").text(snapshot.val().class);
+            $("#email").text(snapshot.val().email);
+            $("#title").text(snapshot.val().title);
+            $("#subtitle").text(snapshot.val().subtitle);
+            $("#content").text(snapshot.val().content);
         })
     });
 }
-function like(counter) {
-    dbref.
+
+
+function init(){
+    updateView();
+    // On page load following code checks for older storage like records.
+    if(localStorage.getItem(("likedStories")) !== null) {
+        // JSON because localStorage does not supports arrays.
+        likes = JSON.parse(localStorage.getItem("likedStories"));
+    }
+    checkLiked();
+    animate_like();
 }
+
+function setLikedPages() {
+    $('#dropdown2').empty();
+    let likedStories = JSON.parse(localStorage.getItem("likedStories"));
+    $.each(likedStories, function (index, val) {
+        //let li = '<li><a onclick="goToPage('+val+')">'+parseInt(index+1)+ getTitle(val)+'</a></li>';
+        getInfo(val);
+    });
+}
+
 function next() {
     counter++;
-    updateView();
+    if(counter > lastPage)
+        counter--;
+    else updateView();
+    console.log(counter);
 }
 
 function prev() {
     counter--;
-    updateView()
+    if(counter < frontPage)
+        counter++;
+    else updateView();
+    console.log(counter);
 }
 
-//TODO : // if updateView returns an null snapshot go to next. following function checks for that.

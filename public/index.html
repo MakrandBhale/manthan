@@ -16,10 +16,13 @@
           };
           firebase.initializeApp(config);
       </script>
+      <script type="text/javascript" src="js/animate.js"></script>
       <script type="text/javascript" src="js/index.js"></script>
       <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
+      <link rel="stylesheet" href="css/animate.css">
+
+      <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
      <link type="text/css" rel="stylesheet" href="css/main.css">
     <!--Import jQuery before materialize.js-->
@@ -30,7 +33,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
-  <body onload="updateView()" bgcolor="#FAFAFA">
+  <body onload="init()" bgcolor="#FAFAFA">
     <header>
         <div class="navWrapper">
           <nav class="white z-depth-1" id="navbar">
@@ -41,9 +44,9 @@
                 </a>
                 <!--Nav bar buttons -->
               <ul class="right">
-                  <li><a href="#" class="btn-floating waves-effect blue"><i class="material-icons amber-text text-lighten-2">favorite</i></a></li>
-                  <li><a href="#" class="btn-floating waves-effect waves-light deep-purple"><i class="material-icons teal-text text-accent-3">bookmark</i></a></li>
-                  <li><a href="#" class="btn-floating waves-effect yellow"><i class="material-icons grey-text text-darken-4">share</i></a></li>
+                  <li><a class="btn-floating waves-effect white" onclick="like()"><i id="likeIcon" class="material-icons red-text text-lighten-2">favorite_border</i></a></li>
+                  <li><a class="btn-floating waves-effect waves-light deep-purple" onclick="bookmark()"><i class="material-icons teal-text text-accent-3">bookmark</i></a></li>
+                  <li><a class="btn-floating waves-effect yellow" onclick="goToBookMark()"><i class="material-icons grey-text text-darken-4">share</i></a></li>
                   <li></li>
               </ul>
             </div>
@@ -51,13 +54,42 @@
         </div>
         <!--Side nav HTML code is below-->
         <ul id="slide-out" class="side-nav">
-            <li class="bold"><a href="#!" class="waves-effect waves-teal"><i class="material-icons teal-text text-accent-3">bookmark</i>Bookmarks</a></li>
-            <li class="bold"><a href="#!" class="waves-effect waves-teal"><i class="material-icons amber-text text-lighten-1">favorite</i> Liked Articles</a></li>
+            <li>
+            <div class="background center-align" >
+                <img src="img/logo.png" style="height: 50px; margin: 18px">
+            </div>
+            </li>
+
+            <li><div class="divider"></div></li>
+            <li class="bold">
+                <a href="#!" class="dropdown-button waves-effect " data-activates="dropdown1">
+                <i class="material-icons teal-text text-accent-3">bookmark</i><i class="material-icons right">arrow_drop_down</i>Bookmarks</a>
+            </li>
+            <li class="bold">
+                <a href="#!" class="dropdown-button waves-effect" data-activates="dropdown2">
+                    <i class="material-icons amber-text text-lighten-1">favorite</i><i class="material-icons right">arrow_drop_down</i>Liked Stories</a>
+            </li>
+
+            <ul id='dropdown1' class='dropdown-content'>
+                <li><a href="#!">First</a></li>
+                <li><a href="#!">Second</a></li>
+                <li><a href="#!">Third</a></li>
+                <li><a href="#!">Fourth</a></li>
+            </ul>
+            <ul id='dropdown2' class='dropdown-content'>
+                <script type="text/javascript">
+                    setLikedPages();
+                </script>
+            </ul>
+            <li><div class="divider"></div></li>
+            <li class="bold"><a href="#!" class="waves-effect waves-teal"><i class="material-icons grey-text text-accent-3">settings</i>Settings</a></li>
+
+
         </ul>
 
     </header>
     <main>
-      <div  class="container" id="article" style="padding-top: 84px;">
+      <div class="container" id="stories" style="padding-top: 84px;">
         <div class="row">
             <!-- following div creates pagination with two arrow. This is hidden on small screens -->
           <div class="col s0 m1 l2">
@@ -107,7 +139,11 @@
         //for sidenav
         $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 240
-                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                draggable: true, // Choose whether you can drag to open on touch screens,
+                onOpen: function(el){
+
+                }
             }
         );
         $(document).ready(function(){
