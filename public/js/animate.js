@@ -1,36 +1,4 @@
 
-function goToPage(index){
-
-}
-
-function getInfo(index) {
-
-    console.log(index)
-    dbref.orderByChild("index").equalTo(index).once('value').then(function (dataSnapshot){
-
-        if(dataSnapshot == null){
-            console.log(dataSnapshot);
-            return true;
-        }
-        dataSnapshot.forEach(function (snapshot) {
-            console.log(snapshot.val().email);
-            let li = '<div class="row">\n' +
-                '        <div class="col">\n' +
-                '            <img class="img-circle" src="img/sky.jpeg"/>\n' +
-                '        </div>\n' +
-                '        <div class="col">\n' +
-                '            <span class="truncate" id="alt_author"><b>'+snapshot.val().author+'</b></span>' +
-                '           <span class="truncate" id="alt_email" class="grey-text text-darken-1" style="">'+snapshot.val().email+'</span>' +
-
-                '        </div>\n' +
-                '    </div>' +
-                '<div class="divider"></div>'
-            $('#dropdown2').append(li);
-            $
-        })
-
-    });
-}
 
 function bookmark(){
     localStorage.setItem(counter, document.documentElement.scrollTop.toString());
@@ -53,7 +21,7 @@ function like() {
 
     }
     checkLiked();
-    setLikedPages();
+
 }
 
 function unlike() {
@@ -64,21 +32,18 @@ function unlike() {
         localStorage.removeItem("likedStories");
         localStorage.setItem("likedStories", JSON.stringify(likes));
     }
-
     checkLiked();
-    setLikedPages();
+
 }
 
 
 //following function checks the likes array if the current indexed page is liked or not
 
 function checkLiked(){
-    if(likes.includes(counter)){
+    if(likes.includes(counter)) {
         $("#likeIcon").text("favorite");
-        console.log("liked");
     }
     else {
-        console.log("unliked");
         $("#likeIcon").text("favorite_border");
     }
 }
@@ -89,4 +54,11 @@ function animate_like() {
     $('#likeIcon').addClass('animated bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
         $(this).removeClass('animated bounceIn');
     });
+}
+
+function animate_empty(){
+    setTimeout(function () {
+        $('#empty').addClass('animated pulse');
+        $('#empty').css('animation-iteration-count', 'infinite');
+    } , 1000);
 }

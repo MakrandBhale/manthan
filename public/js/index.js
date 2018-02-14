@@ -19,12 +19,19 @@ function updateView(){
             $("#title").text(snapshot.val().title);
             $("#subtitle").text(snapshot.val().subtitle);
             $("#content").text(snapshot.val().content);
+            $("#alt_content").text(getWords(snapshot.val().content) + " ...");
         })
     });
 }
 
 
 function init(){
+    let goTo = localStorage.getItem("goToPage");
+    console.log(goTo);
+    if(!isNaN(parseInt(goTo))){
+        console.log(goTo);
+        counter = parseInt(goTo);
+    }
     updateView();
     // On page load following code checks for older storage like records.
     if(localStorage.getItem(("likedStories")) !== null) {
@@ -35,14 +42,12 @@ function init(){
     animate_like();
 }
 
-function setLikedPages() {
-    $('#dropdown2').empty();
-    let likedStories = JSON.parse(localStorage.getItem("likedStories"));
-    $.each(likedStories, function (index, val) {
-        //let li = '<li><a onclick="goToPage('+val+')">'+parseInt(index+1)+ getTitle(val)+'</a></li>';
-        getInfo(val);
-    });
-}
+// function setLikedPages() {
+//     let likedStories = JSON.parse(localStorage.getItem("likedStories"));
+//     $.each(likedStories, function (index, val) {
+//         getInfo(val);
+//     });
+// }
 
 function next() {
     counter++;
@@ -60,3 +65,6 @@ function prev() {
     console.log(counter);
 }
 
+function getWords(str) {
+    return str.split(/\s+/).slice(0,8).join(" ");
+}
