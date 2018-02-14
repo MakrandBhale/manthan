@@ -6,6 +6,10 @@ online magazines mean when they say its digitised, I've created actual digital v
 
 #Screenshots
 
+![Alt text](/Screenshots/Screenshot from 2018-02-14 15-00-17.png?raw=true "Optional Title")
+![Alt text](/Screenshots/Screenshot from 2018-02-14 15-08-19.png?raw=true "Optional Title")
+![Alt text](/Screenshots/Screenshot from 2018-02-14 15-09-09.png?raw=true "Optional Title")
+![Alt text](/Screenshots/Screenshot from 2018-02-14 15-11-33.png?raw=true "Optional Title")
 
 #Libraries used
 
