@@ -16,12 +16,9 @@ function like() {
         Materialize.toast('Added to Liked Stories', 2000, 'rounded')
     }
     else {
-        let $toastContent = $('<span>Already liked !</span>').add($('<button onclick="unlike()" class="btn-flat toast-action">Undo</button>'));
-        Materialize.toast($toastContent, 4000, 'rounded');
-
+        unlike();
     }
     checkLiked();
-
 }
 
 function unlike() {
