@@ -32,7 +32,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
-  <body onload="init()" bgcolor="#FAFAFA">
+  <body id="body" onload="init()" bgcolor="#FAFAFA">
     <header>
         <div class="navWrapper">
           <nav class="white z-depth-1" id="navbar">
@@ -43,15 +43,26 @@
                 </a>
                 <!--Nav bar buttons -->
               <ul class="right">
-                  <li><a class="btn-floating btn-flat waves-effect white" onclick="like()"><i id="likeIcon" class="material-icons red-text text-lighten-2">favorite_border</i></a></li>
-                  <li><a class="btn-floating waves-effect white" onclick="like()"><i id="likeIcon" class="material-icons red-text text-lighten-2">favorite_border</i></a></li>
-                  <li><a class="btn-floating waves-effect waves-light deep-purple" onclick="bookmark()"><i class="material-icons teal-text text-accent-3">bookmark</i></a></li>
-                  <li><a class="btn-floating waves-effect yellow" onclick="goToBookMark()"><i class="material-icons grey-text text-darken-4">share</i></a></li>
-                  <li></li>
+                <li><a class="btn-floating btn-flat waves-effect white" onclick="like()"><i id="likeIcon" class="material-icons red-text text-lighten-2">favorite_border</i></a></li>  
+                <li><a data-activates="color_menu" class="dropdown-button btn-floating btn-flat waves-effect white" onclick=""><i id="format" class="material-icons grey-text text-darken-3">format_color_fill</i></a></li>
+                  <!-- <li><a class="btn-floating btn-flat waves-effect white" onclick="bookmark()"><i class="material-icons teal-text text-accent-3">bookmark_border</i></a></li> -->
+                <li><a data-activates="font_menu" class="dropdown-button btn-floating btn-flat waves-effect white" onclick=""><i id="format" class="material-icons grey-text text-darken-3">format_size</i></a></li>
               </ul>
             </div>
           </nav>
         </div>
+        <ul id="color_menu" class="dropdown-content">
+            <li><a class="grey-text text-darken-3" onclick="changeColor('black-text', '#FAFAFA')">White</a></li>
+            <li><a class="grey-text text-darken-3" onclick="changeColor('black-text', '#F5EFDC')">Sepia</a></li>
+            <li><a class="grey-text text-darken-3" onclick="changeColor('white-text', '#000')">Dark</a></li>
+            <li class="divider"></li>
+        </ul>
+        <ul id="font_menu" class="dropdown-content">
+                <li><a class="grey-text text-darken-3" onclick="changeSize('small')">Small</a></li>
+                <li><a class="grey-text text-darken-3" onclick="changeSize('normal')">Normal</a></li>
+                <li><a class="grey-text text-darken-3" onclick="changeSize('large')">Large</a></li>
+                <li class="divider"></li>
+            </ul>
         <!--Side nav HTML code is below-->
         <ul id="slide-out" class="side-nav">
             <li>
@@ -99,7 +110,7 @@
                 <div class="col s4">
                     <span id="author"><b>Loading ...</b></span><br>
                     <span id="class" class="grey-text text-darken-1" style="font-weight:400;">Loading ...</span><br>
-                    <span id="email" class="grey-text text-darken-1" style="">Loading ...</span>
+                    <span id="email" class="grey-text text-darken-1" >Loading ...</span>
                 </div>
             </div>
               <!-- Image related to the article goes here-->
