@@ -43,6 +43,7 @@
                 </a>
                 <!--Nav bar buttons -->
               <ul class="right">
+                  <li><a class="btn-floating btn-flat waves-effect white" onclick="like()"><i id="likeIcon" class="material-icons red-text text-lighten-2">favorite_border</i></a></li>
                   <li><a class="btn-floating waves-effect white" onclick="like()"><i id="likeIcon" class="material-icons red-text text-lighten-2">favorite_border</i></a></li>
                   <li><a class="btn-floating waves-effect waves-light deep-purple" onclick="bookmark()"><i class="material-icons teal-text text-accent-3">bookmark</i></a></li>
                   <li><a class="btn-floating waves-effect yellow" onclick="goToBookMark()"><i class="material-icons grey-text text-darken-4">share</i></a></li>
@@ -142,7 +143,7 @@
         $(document).ready(function(){
 
         });
-        
+
         function change() {
             console.log('boo');
             $('.button-collapse').sideNav('show');
