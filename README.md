@@ -1,6 +1,5 @@
-#### Its a annual Magazine of my college MGM's College of CS & IT. This is the digitized version of the Magazine. Instead of creating the pdf version of the magazine which most of the online magazines mean when they say its digitised, I've created actual digital version of the magazine.
-
-***
+# Manthan
+Its a annual Magazine of my college MGM's College of CS & IT. This is the digitized version of the Magazine. Instead of creating the pdf version of the magazine which most of the online magazines mean when they say its digitised, I've created actual digital version of the magazine.
 
 ## Screenshots :
 
